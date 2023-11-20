@@ -1,31 +1,34 @@
-import logo from '../assets/logo.svg';
 import '../assets/App.css';
-import {Container} from "react-bootstrap";
 import {useState} from "react";
+import GameOne from './GameOne'
+import GameTwo from './GameTwo'
+import {Link, Route, Routes} from "react-router-dom";
+
 
 
 function App() {
     const [text, setText] = useState('');
-    const [randomNumber, setRandomNumber] = useState(generateRandomNumber());
 
-    function generateRandomNumber(){
-        return Math.floor(Math.random())
+    const handleButtonClick = (path) =>{
+        console.log(`Button clicked for ${path}`);
+
     }
-    const handleTextChange = (event) => {
-        setText(event.target.value);
-    }
-  return (
-    <div className="App">
-        <h1>Sayı Tahmin Oyunu </h1>
-        <input
-            type="text"
-            placeholder="Enter text here"
-            value={text}
-            onChange={handleTextChange}
-        />
-        <p>Doğru cevap: {text}</p>
-    </div>
-  );
+
+    return (
+        <div className="App">
+            <h1>Sayı Tahmin Oyunu </h1>
+            <button onClick={() => handleButtonClick("/oyun1")}>
+                <Link to="/oyun1" >Oyun 1</Link>
+            </button>
+            <button onClick={() => handleButtonClick("/oyun2")}>
+                <Link to="/oyun2" >Oyun 2</Link>
+            </button>
+            <Routes>
+                <Route path= "/oyun1" element={<GameOne/>} />
+                <Route path= "/oyun2" element={<GameTwo/>} />
+            </Routes>
+        </div>
+    );
 }
 
 
