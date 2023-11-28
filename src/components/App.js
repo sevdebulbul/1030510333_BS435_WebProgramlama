@@ -17,6 +17,7 @@ function App() {
     return (
         <div className="App">
             <h1>Sayı Tahmin Oyunu </h1>
+            <h2>Lütfen aşağıdaki oyun modlarından birini seçiniz.</h2>
             <button onClick={() => handleButtonClick("/oyun1")}>
                 <Link to="/oyun1" >Oyun 1</Link>
             </button>
