@@ -4,16 +4,12 @@ import GameOne from './GameOne'
 import GameTwo from './GameTwo'
 import {Link, Route, Routes} from "react-router-dom";
 
-
-
 function App() {
     const [text, setText] = useState('');
 
     const handleButtonClick = (path) =>{
         console.log(`Button clicked for ${path}`);
-
     }
-
     return (
         <div className="App">
             <h1>Sayı Tahmin Oyunu </h1>
@@ -31,8 +27,5 @@ function App() {
         </div>
     );
 }
-
-
-
 
 export default App;
