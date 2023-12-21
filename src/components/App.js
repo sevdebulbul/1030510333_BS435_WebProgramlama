@@ -1,15 +1,14 @@
 import '../assets/App.css';
-import {useState} from "react";
 import GameOne from './GameOne'
 import GameTwo from './GameTwo'
+//import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import {Link, Route, Routes} from "react-router-dom";
 
 function App() {
-    const [text, setText] = useState('');
-
     const handleButtonClick = (path) =>{
         console.log(`Button clicked for ${path}`);
     }
+
     return (
         <div className="App">
             <h1>Sayı Tahmin Oyunu </h1>
