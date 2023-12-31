@@ -1,4 +1,7 @@
-import React , {useState} from "react";
+import React, {useEffect, useState} from "react";
+import '../assets/GameOne.css';
+
+
 
 const GameOne=() => {
     const [min, setMin] = useState(1);
@@ -6,6 +9,10 @@ const GameOne=() => {
     const [randomSayi, setRandomSayi] = useState(generateRandomSayi(min,max));
     const [tahmin, setTahmin] = useState('');
     const [mesaj, setMesaj] = useState('');
+
+    useEffect(() => {
+        setRandomSayi(generateRandomSayi(min,max));
+    },[min, max]);
 
     function generateRandomSayi (min, max){
         return  Math.floor(Math.random() * (max - min + 1))+ min;
@@ -50,22 +57,28 @@ const GameOne=() => {
             <h1>Pozitif Sayı Tahmin Oyununa Hoşgeldiniz!</h1>
             <label>
                 Alt sınır:
-                <input type="number" value={min} onChange={handleMinChange} />
+                <input type="number"
+                       value={min}
+                       onChange={handleMinChange} />
             </label>
             <label>
             Üst sınır:
-            <input type="number" value={max} onChange={handleMaxChange} />
+            <input type="number"
+                   value={max}
+                   onChange={handleMaxChange} />
             </label>
             <p>{mesaj}</p>
             {!mesaj.includes('tebrikler') && (
                 <div>
-                    <input type="number" value={tahmin} onChange={handleInputChange}
+                    <input type="number"
+                           value={tahmin}
+                           onChange={handleInputChange}
                            placeholder={`Sayıyı tahmin edin (${min}-${max})`}
                     />
-                    <button onClick={handleGuess}>Şansını dene!</button>
+                    <button onClick={handleGuess} >Şansını dene!</button>
                 </div>
             )}
-            <button onClick={handleTekrar}>Yeniden oyna!</button>
+            <button onClick={handleTekrar} >Yeniden oyna!</button>
         </div>
     )
 }
