@@ -11,7 +11,7 @@ body{
 
 .App {
   text-align: center;
-  background-color: firebrick;
+  background-color: lightblue;
   padding: 20px;
   border-radius: 8px;
 
@@ -30,12 +30,17 @@ h2{
   padding: 10px 20px;
   margin: 10px;
   text-decoration: none;
-  background-color: dimgray;
+  background-color: cadetblue;
   color: black;
   border-radius: 4px;
   transition: background-color 0.3s ease;
 }
 
 .game-button:hover{
-  background-color: dimgray;
+  background-color: white;
+}
+
+.oyun-image{
+  width: 39%;
+  height: auto;
 }

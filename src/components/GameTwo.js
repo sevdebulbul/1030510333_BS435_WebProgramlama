@@ -1,4 +1,5 @@
-import {useState} from "react";
+import React, {useEffect, useState} from "react";
+import '../assets/GameTwo.css';
 
 export function GameTwo() {
     const [minRange, setMinRange] = useState(-100);
@@ -6,6 +7,10 @@ export function GameTwo() {
     const [hedefSayi, setHedefSayi] = useState(generateRandomNumber());
     const [tahmin, setTahmin] = useState('');
     const [mesaj, setMesaj] = useState('');
+
+    useEffect(() => {
+        setHedefSayi(generateRandomNumber(minRange,maxRange));
+    },[minRange, maxRange]);
 
     function generateRandomNumber(){
         return Math.floor(Math.random()*(maxRange - minRange + 1)) + minRange;
@@ -44,6 +49,15 @@ export function GameTwo() {
             );
         }
     }
+    console.log(`Guess: ${tahmin}, Random Sayı: ${hedefSayi}`,`Mesaj: ${mesaj}`);
+
+    const handleTekrar = () => {
+        setMinRange(-100);
+        setMaxRange(-1);
+        setHedefSayi(generateRandomNumber(minRange, maxRange));
+        setTahmin('');
+        setMesaj('');
+    }
     return(
         <div>
             <h1>Negatif Sayı Tahmin Oyununa Hoşgeldiniz!</h1>
@@ -51,13 +65,30 @@ export function GameTwo() {
             <form onSubmit={handleSubmit}>
                 <label>
                     Alt sınır:
-                    <input type="number" value={minRange} onChange={handleMinRangeChange} required />
+                    <input type="number"
+                           value={minRange}
+                           onChange={handleMinRangeChange}
+                           required />
+                </label>
+                <label>
+                    Üst sınır:
+                    <input type="number"
+                           value={maxRange}
+                           onChange={handleMaxRangeChange}
+                           required />
                 </label>
                 <label>
                     Tahmininiz:
-                    <input type="number" value={tahmin} onChange={handleInputChange} min={minRange} max={maxRange} required />
+                    <input type="number"
+                           value={tahmin}
+                           onChange={handleInputChange}
+                           min={minRange}
+                           max={maxRange}
+                           required />
                 </label>
                 <button type="submit">Şansını Dene!</button>
+                <br/>
+                <button onClick={handleTekrar} >Yeniden oyna!</button>
             </form>
         </div>
     )
